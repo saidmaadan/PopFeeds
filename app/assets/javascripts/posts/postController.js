@@ -4,18 +4,22 @@
 	var app = angular.module("PopUp");
 	app.controller('PostController', PostController);
 
-		function PostController($scope, $stateParams, posts){
-	    $scope.post = posts.posts[$stateParams.id];
+		function PostController($scope, posts, post){
+	    $scope.post = post
 
 	    $scope.addComment = function(){
 			  if($scope.body === '') { return; }
-			  $scope.post.comments.push({
+			  posts.addComment(post.id, {
 			    body: $scope.body,
 			    author: 'user',
-			    upvotes: 0
-			    
+			  }).success(function(comment) {
+			    $scope.post.comments.push(comment);
 			  });
 			  $scope.body = '';
+			};
+
+			$scope.incrementUpvotes = function(comment){
+			  posts.upvoteComment(post, comment);
 			};
 		}
 	}());

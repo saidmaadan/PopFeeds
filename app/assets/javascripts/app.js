@@ -11,7 +11,12 @@
 				.state('home',{
 					url: '/home',
 					templateUrl: 'home/_home.html',
-					controller: 'MainController'
+					controller: 'MainController',
+					resolve: {
+					  postPromise: ['posts', function(posts){
+					    return posts.getAll();
+					  	}]
+					  }
 				})
 
 				.state('posts',{
@@ -19,10 +24,11 @@
 					templateUrl: 'posts/_posts.html',
 					controller: "PostController",
 					resolve: {
-					  postPromise: ['posts', function(posts){
-					    return posts.getAll();
-					  	}]
-					  }
+					  post: ['$stateParams', 'posts', function($stateParams, posts) {
+					    return posts.get($stateParams.id);
+					  }]
+					}
+										
 				});
 
 		}]);
