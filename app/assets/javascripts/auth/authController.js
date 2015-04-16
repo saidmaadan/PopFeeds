@@ -1,5 +1,5 @@
-angular.module('flapperNews')
-.controller('AuthCtrl', [
+angular.module('PopUP')
+.controller('AuthController', [
 '$scope',
 '$state',
 'Auth',
@@ -16,5 +16,5 @@ function($scope, $state, Auth){
       $state.go('home');
     });
   };
-  
+
 }]);

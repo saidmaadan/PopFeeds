@@ -1,5 +1,5 @@
-(function(){
-	"use strict";
+// (function(){
+// 	"use strict";
 
 	var app = angular.module("PopUp");
 
@@ -23,4 +23,4 @@
 				posts.upvote(post);
 			};
 		}
-	}());
+	// }());

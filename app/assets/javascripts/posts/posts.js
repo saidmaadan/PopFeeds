@@ -1,5 +1,5 @@
-(function(){
-	"use strict";
+// (function(){
+// 	"use strict";
 
 
 var app = angular.module("PopUp");
@@ -54,4 +54,4 @@ app.factory('posts', ['$http',function($http){
 		};
 	
 	}]);
-}());
+// }());
